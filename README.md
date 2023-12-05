@@ -11,7 +11,7 @@ Home: https://github.com/hypertidy/PROJ
 
 Package license: GPL-3.0-only
 
-Summary: Currently non-operational, a harmless wrapper to allow package 'reproj' to install and function while relying on the 'proj4' package.
+Summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 'reproj', and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
 
 About r-proj
 ------------
@@ -20,7 +20,7 @@ Home: https://github.com/hypertidy/PROJ
 
 Package license: GPL-3.0-only
 
-Summary: Currently non-operational, a harmless wrapper to allow package 'reproj' to install and function while relying on the 'proj4' package.
+Summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 'reproj', and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
 
 Current build status
 ====================
