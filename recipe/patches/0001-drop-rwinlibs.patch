@@ -1,6 +1,6 @@
-From d69fb67a9335557001243148ac26fea06265ac3e Mon Sep 17 00:00:00 2001
-From: Mervin Fansler <mmfansler@gmail.com>
-Date: Tue, 5 Dec 2023 16:15:28 -0500
+From 0aa8f705106a8a19c4c8e6dea40e3c4fd8e2b316 Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <fanslerm@mskcc.org>
+Date: Tue, 5 Dec 2023 16:44:19 -0500
 Subject: [PATCH] drop rwinlibs
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] drop rwinlibs
  1 file changed, 1 insertion(+), 21 deletions(-)
 
 diff --git a/src/Makevars.win b/src/Makevars.win
-index 44e9a49..34bb745 100644
+index 44e9a49..31bc3e6 100644
 --- a/src/Makevars.win
 +++ b/src/Makevars.win
 @@ -1,21 +1 @@
@@ -33,4 +33,4 @@ index 44e9a49..34bb745 100644
 -  rm -f $(SHLIB) $(OBJECTS)
 -
 -.PHONY: all winlibs clean
-+PKG_LIBS = -lproj -lsqlite3 -lcurl -ltiff -lgeotiff -Lwin64
++PKG_LIBS = $(PKG_LIBS) -lproj -lsqlite3 -lcurl -ltiff -lgeotiff -Lwin64
