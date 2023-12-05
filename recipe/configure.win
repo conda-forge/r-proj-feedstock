@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+echo "PKG_CPPFLAGS=-DNDEBUG -I\"${LIBRARY_PREFIX}/include\" -I\"${PREFIX}/include\"" > src/Makevars.win
+echo "PKG_LIBS=-L\"${LIBRARY_PREFIX}/lib\" -lproj -Lwin64" >> src/Makevars.win
