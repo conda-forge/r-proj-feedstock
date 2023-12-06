@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+echo "PKG_CPPFLAGS=-DNDEBUG -DUSE_PROJ6_API=1 -I\"${BUILD_PREFIX//\\//}/Library/include\" -I\"${BUILD_PREFIX//\\//}/include\"" > src/Makevars.win
+echo "PKG_LIBS=-L\"${PREFIX//\\//}/Library/lib\" -lproj -Lwin64" >> src/Makevars.win
