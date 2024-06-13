@@ -38,9 +38,13 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-lifecycle
+    - r-wk
     - proj
   run:
     - r-base
+    - r-lifecycle
+    - r-wk
     - {{ native }}gcc-libs       # [win]
 
 test:
