@@ -1,6 +1,5 @@
 {% set version = "0.5.0" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-proj
@@ -11,10 +10,11 @@ source:
     - {{ cran_mirror }}/src/contrib/PROJ_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/PROJ/PROJ_{{ version }}.tar.gz
   sha256: fa6316693289a65d53a764b422f15072c34f440375264b822f2ddd2c6ec88c9b
+  patches:
+    - patches/0001-minimal-ucrt-libs.patch
 
 build:
-  merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -32,7 +32,7 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - pkg-config
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
@@ -45,7 +45,6 @@ requirements:
     - r-base
     - r-lifecycle
     - r-wk
-    - {{ native }}gcc-libs       # [win]
 
 test:
   requires:
@@ -63,7 +62,6 @@ about:
   license: GPL-3.0-only
   summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 'reproj',
     and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
-  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
