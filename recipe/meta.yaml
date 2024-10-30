@@ -10,6 +10,8 @@ source:
     - {{ cran_mirror }}/src/contrib/PROJ_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/PROJ/PROJ_{{ version }}.tar.gz
   sha256: fa6316693289a65d53a764b422f15072c34f440375264b822f2ddd2c6ec88c9b
+  patches:
+    - patches/0001-minimal-ucrt-libs.patch
 
 build:
   number: 2
@@ -60,7 +62,6 @@ about:
   license: GPL-3.0-only
   summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 'reproj',
     and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
-  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
