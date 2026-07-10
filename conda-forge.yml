@@ -1,8 +1,5 @@
 bot:
   automerge: true
-build_platform:
-  # cross-compile
-  linux_ppc64le: linux_64
 conda_build:
   pkg_format: '2'
 conda_forge_output_validation: true
