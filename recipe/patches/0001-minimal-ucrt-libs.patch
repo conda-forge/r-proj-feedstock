@@ -1,17 +1,17 @@
-From 570fd0dba7b5695f4e67154c226ff1fc9f1f6bde Mon Sep 17 00:00:00 2001
-From: Daniel Nachun <daniel.nachun@gmail.com>
-Date: Wed, 30 Oct 2024 00:35:36 -0700
+From 71bbd311fcef0d566e05e7d106816097a0892695 Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <mervin.fansler@bric.ku.dk>
+Date: Fri, 10 Jul 2026 13:44:47 +0200
 Subject: [PATCH] minimal ucrt libs
 
 ---
- src/Makevars.ucrt | 26 +-------------------------
- 1 file changed, 1 insertion(+), 25 deletions(-)
+ src/Makevars.ucrt | 24 +-----------------------
+ 1 file changed, 1 insertion(+), 23 deletions(-)
 
 diff --git a/src/Makevars.ucrt b/src/Makevars.ucrt
-index 5c93748..01f797b 100644
+index 6613c50..01f797b 100644
 --- a/src/Makevars.ucrt
 +++ b/src/Makevars.ucrt
-@@ -1,25 +1 @@
+@@ -1,23 +1 @@
 -
 -ifeq (,$(shell pkg-config --version 2>/dev/null))
 -  ## sharpyuv needed, as per proj4 PR by Tomas (march 2023)
@@ -31,13 +31,8 @@ index 5c93748..01f797b 100644
 -winlibs:
 -	cp -r "$(R_TOOLS_SOFT)/share/proj" ../inst/
 -
--CXX_STD = CXX
--
 -clean:
 -	rm -f $(SHLIB) $(OBJECTS)
 -
 -.PHONY: all winlibs clean
 +PKG_LIBS = -lproj
--- 
-2.47.0
-

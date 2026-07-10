@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,19 +9,25 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/PROJ_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/PROJ/PROJ_{{ version }}.tar.gz
-  sha256: a66925d2b23e9373af55e98a3457542e2130dddf741dabdf9f9bf335710c098e
+  sha256: a70268c27b7bf6fabe35a4c958daf28bb7ae633c33b492f94ec65b65c56a3ce7
   patches:
     - patches/0001-minimal-ucrt-libs.patch
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-lifecycle                  # [build_platform != target_platform]
+    - r-wk >=0.9.2                 # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
@@ -39,12 +45,12 @@ requirements:
   host:
     - r-base
     - r-lifecycle
-    - r-wk
+    - r-wk >=0.9.2
     - proj
   run:
     - r-base
     - r-lifecycle
-    - r-wk
+    - r-wk >=0.9.2
 
 test:
   requires:
@@ -60,8 +66,8 @@ test:
 about:
   home: https://github.com/hypertidy/PROJ
   license: GPL-3.0-only
-  summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 'reproj',
-    and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
+  summary: A wrapper around the generic coordinate transformation software 'PROJ' that transforms coordinates from one coordinate reference system ('CRS') to another. This includes cartographic projections as well as geodetic transformations.  The intention is for this package to be used by user-packages such as 
+    'reproj', and that the older 'PROJ.4' and version 5 pathways be provided by the 'proj4' package.
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
